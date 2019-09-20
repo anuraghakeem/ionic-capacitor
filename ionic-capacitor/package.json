@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@capacitor/core": "1.2.1",
+    "@capacitor/ios": "^1.2.1",
     "@ionic/core": "^4.9.1",
     "@ionic/react": "^4.9.0-rc.2",
     "@types/google-maps-react": "^2.0.1",
@@ -24,7 +26,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "ionic:build": "npm run build && ionic capacitor copy"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -40,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@capacitor/cli": "1.2.1"
   }
 }
