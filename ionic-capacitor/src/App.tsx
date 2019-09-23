@@ -68,6 +68,6 @@ const App = (props: any, { watch, settings }: any) => {
 };
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyAdeclnX5jO2x7oFJYv7UgQ-ddanZ85BNQ'
+  apiKey: 'API KEY HERE'
 })(App);
 
