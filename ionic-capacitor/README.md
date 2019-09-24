@@ -4,6 +4,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npx ionic capacitor add ios`
+Adds build for IOS
+
+### `npx ionic capacitor run ios`
+Runs the app on Xcode
+
 ### `npm start`
 
 Runs the app in the development mode.<br>
