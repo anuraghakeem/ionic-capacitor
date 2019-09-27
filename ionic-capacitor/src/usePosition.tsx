@@ -1,12 +1,12 @@
 import {useState, useEffect} from 'react';
 
 const defaultSettings = {
-  enableHighAccuracy: false,
+  enableHighAccuracy: true,
   timeout: Infinity,
   maximumAge: 0,
 };
 
-export const usePosition = (watch = false, settings = defaultSettings) => {
+export const usePosition = (watch = true, settings = defaultSettings) => {
   const [position, setPosition] = useState({});
   const [error, setError] = useState("");
 
