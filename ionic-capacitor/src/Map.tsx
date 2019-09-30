@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import { withGoogleMap, withScriptjs, GoogleMap,Marker,Polyline } from 'react-google-maps'
+import { withGoogleMap, withScriptjs, GoogleMap,Marker,Polyline } from 'react-google-maps';
 
 const Map=(props:any)=> {
-    const [progress, setProgress] = useState([]);
+    const [progress, setProgress]:any = useState([])
 
-    let path = [
+    let path:any = [
         { lat: 18.558908, lng: -68.389916 },
         { lat: 18.558853, lng: -68.389922 },
         { lat: 18.558375, lng: -68.389729 },
@@ -12,7 +12,7 @@ const Map=(props:any)=> {
         { lat: 18.55805, lng: -68.388613 },
         { lat: 18.558256, lng: -68.388213 },
         { lat: 18.558744, lng: -68.387929 }
-      ];
+      ]
     
     let  velocity = 5
     let  initialDate = new Date()
@@ -38,9 +38,9 @@ const Map=(props:any)=> {
         if (! distance) {
           return
         }
-        console.log(path);
-        let progress = path.filter(coordinates => coordinates.distance < distance)
-        const nextLine = path.find(coordinates => coordinates.distance > distance)
+        
+        let progress = path.filter((coordinates: { distance: number; }) => coordinates.distance < distance)
+        const nextLine = path.find((coordinates: { distance: number; }) => coordinates.distance > distance)
     if (! nextLine) {
         setProgress({progress})
       return // it's the end!
@@ -68,14 +68,10 @@ const Map=(props:any)=> {
     )
 
     progress = progress.concat(position)
-        setProgress({ progress })
+        setProgress( progress )
       }
-    
-    //   let consoleDistance = () => {
-    //     console.log(getDistance())
-    //   }
 
-    path = path.map((coordinates, i, array) => {
+    path = path.map((coordinates: { lat: any; lng: any; }, i: number, array: { lat: any; lng: any; }[]) => {
     if (i === 0) {
         return { ...coordinates, distance: 0 } // it begins here! 
     }
@@ -94,7 +90,7 @@ const Map=(props:any)=> {
     return { ...coordinates, distance }
     })
   
-      console.log(path)
+      // console.log(path)
     return (
       <GoogleMap
         defaultZoom={16}
@@ -102,8 +98,10 @@ const Map=(props:any)=> {
         >
         {progress && (
             <>
-        <Polyline path={path} options={{ strokeColor: "#FF0000 " }} />
-        {props.isMarkerShown && <Marker position={path[path.length - 1]} />}
+        <Polyline path={progress} options={{ strokeColor: "#FF0000 " }} />
+        {/* {props.isMarkerShown &&  */}
+        <Marker position={progress[progress.length - 1]} />
+         {/* } */}
         </>
         )}
       </GoogleMap>
@@ -111,10 +109,10 @@ const Map=(props:any)=> {
 }
 
 const MapComponent = withScriptjs(withGoogleMap(Map))
-
+//Take api key from google API
 export default () => (
   <MapComponent
-  googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAdeclnX5jO2x7oFJYv7UgQ-ddanZ85BNQ"
+  googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=API_KEY_HERE"
   loadingElement={<div style={{ height: `100%` }} />}
   containerElement={<div style={{ height: `400px`, width: '500px' }} />}
   mapElement={<div style={{ height: `100%` }} />}
